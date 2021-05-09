@@ -3,10 +3,15 @@
 ## 動作環境
 
 ```bash
+# terraformer実行時
 # terraform -v
 Terraform v0.13.7
 # terraformer -v
 version v0.8.13
+
+# terraform実行時
+terraform -v
+Terraform v0.15.1
 ```
 
 ## Terraformer
@@ -16,12 +21,7 @@ version v0.8.13
 echo 'provider "aws" {}' > init.tf
 terraform init
 
-# 設定情報をAWSから取得
-terraformer import aws --resources=alb,ec2_instance,eip,ebs,igw,nat,rds,route_table,sg,subnet,vpc,vpc_peering --regions=ap-northeast-1 --path-pattern {output}/{provider}/develop/ --filter="Name=tags.Env;Value=dev"
-terraformer import aws --resources=alb,ec2_instance,eip,ebs,igw,nat,rds,route_table,sg,subnet,vpc,vpc_peering --regions=ap-northeast-1 --path-pattern {output}/{provider}/production/ --filter="Name=tags.Env;Value=prod"
-
-# 修正中
-terraformer import aws --resources="*" --path-pattern {output}/{provider}/develop/ --regions=ap-northeast-1 --filter="Name=tags.Env;Value=dev"
+# 設定情報をAWSから取得（GUIで作成した情報をもとにTerrarformファイルを作成する）
 terraformer import aws --resources=vpc,igw,subnet,route_table,alb,sg,ecr,ec2_instance,ebs,eni,eip,ecs,cloudwatch,logs,rds,ssm,iam,s3 --path-pattern {output}/{provider}/develop/ --regions=ap-northeast-1 --filter="Name=tags.Env;Value=dev"
 ```
 
