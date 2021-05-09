@@ -8,9 +8,5 @@ resource "aws_lb" "sample-dev-alb-ingress" {
     aws_subnet.sample-dev-sb-pb-ingress-1c.id
   ]
   security_groups = [aws_security_group.sample-dev-sg-ingress.id]
-  tags = {
-    "Service": "${var.app_name}-${var.env}"
-    "Env": "${var.env}"
-    "Name": "${var.app_name}-${var.env}-alb-ingress"
-  }
+  tags = merge({"Name": "${var.app_name}-${var.env}-alb-ingress"}, var.common_tags)
 }

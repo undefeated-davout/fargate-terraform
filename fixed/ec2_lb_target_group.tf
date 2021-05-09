@@ -15,12 +15,7 @@ resource "aws_lb_target_group" "sample-dev-tg-blue" {
     interval            = "15"
     matcher             = "200"
   }
-
-  tags = {
-    "Service": "${var.app_name}-${var.env}"
-    "Env": "${var.env}"
-    "Name": "${var.app_name}-${var.env}-tg-blue"
-  }
+  tags = merge({"Name": "${var.app_name}-${var.env}-tg-blue"}, var.common_tags)
 }
 
 resource "aws_lb_target_group" "sample-dev-tg-green" {
@@ -40,10 +35,5 @@ resource "aws_lb_target_group" "sample-dev-tg-green" {
     interval            = "15"
     matcher             = "200"
   }
-
-  tags = {
-    "Service": "${var.app_name}-${var.env}"
-    "Env": "${var.env}"
-    "Name": "${var.app_name}-${var.env}-tg-green"
-  }
+  tags = merge({"Name": "${var.app_name}-${var.env}-tg-green"}, var.common_tags)
 }

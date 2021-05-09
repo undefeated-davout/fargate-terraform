@@ -7,3 +7,4 @@ variable "common_tags" {default = {
   "Service": "sampleapp-dev"
   "Env": "dev"
 }}
+variable "pem_name" {default = "cnapp_key"}

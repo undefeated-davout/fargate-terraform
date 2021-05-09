@@ -43,12 +43,7 @@ resource "aws_ecs_service" "sample-dev-ecs-sb" {
       desired_count,
     ]
   }
-
-  tags = {
-    "Service": "${var.app_name}-${var.env}"
-    "Env": "${var.env}"
-    "Name": "${var.app_name}-${var.env}-ecs-sb"
-  }
+  tags = merge({"Name": "${var.app_name}-${var.env}-ecs-sb"}, var.common_tags)
 }
 
 # Auto Scaling

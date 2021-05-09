@@ -9,11 +9,7 @@ resource "aws_vpc_endpoint" "sample-dev-vpc-ep-ecr-api" {
   ]
   private_dns_enabled = true
   security_group_ids  = [aws_security_group.sample-dev-sg-vpc-endpoint.id]
-  tags = {
-    "Service": "${var.app_name}-${var.env}"
-    "Env": "${var.env}"
-    "Name": "${var.app_name}-${var.env}-vpc-ep-ecr-api"
-  }
+  tags = merge({"Name": "${var.app_name}-${var.env}-vpc-ep-ecr-api"}, var.common_tags)
 }
 
 # ECR用（docker pushコマンドなどのDockerクライアントコマンド呼び出し用）
@@ -27,11 +23,7 @@ resource "aws_vpc_endpoint" "sample-dev-vpc-ep-dkr" {
   ]
   private_dns_enabled = true
   security_group_ids  = [aws_security_group.sample-dev-sg-vpc-endpoint.id]
-  tags = {
-    "Service": "${var.app_name}-${var.env}"
-    "Env": "${var.env}"
-    "Name": "${var.app_name}-${var.env}-vpc-ep-dkr"
-  }
+  tags = merge({"Name": "${var.app_name}-${var.env}-vpc-ep-dkr"}, var.common_tags)
 }
 
 # CloudWatchのlog用
@@ -45,11 +37,7 @@ resource "aws_vpc_endpoint" "sample-dev-vpc-ep-logs" {
   ]
   private_dns_enabled = true
   security_group_ids  = [aws_security_group.sample-dev-sg-vpc-endpoint.id]
-  tags = {
-    "Service": "${var.app_name}-${var.env}"
-    "Env": "${var.env}"
-    "Name": "${var.app_name}-${var.env}-vpc-ep-logs"
-  }
+  tags = merge({"Name": "${var.app_name}-${var.env}-vpc-ep-logs"}, var.common_tags)
 }
 
 # Systems Manager用（パラメータストア）

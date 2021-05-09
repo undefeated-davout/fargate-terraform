@@ -56,10 +56,5 @@ JSON
   lifecycle {
     ignore_changes = [container_definitions]
   }
-
-  tags = {
-    "Service": "${var.app_name}-${var.env}"
-    "Env": "${var.env}"
-    "Name": "${var.app_name}-${var.env}-ecs-tk"
-  }
+  tags = merge({"Name": "${var.app_name}-${var.env}-ecs-tk"}, var.common_tags)
 }

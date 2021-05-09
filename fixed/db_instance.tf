@@ -36,11 +36,7 @@ resource "aws_rds_cluster" "sample-dev-rds-cl" {
     ]
   }
   depends_on = [aws_db_subnet_group.sample-dev-rds-sbgr]
-  tags = {
-    "Service": "${var.app_name}-${var.env}"
-    "Env": "${var.env}"
-    "Name": "${var.app_name}-${var.env}-db"
-  }
+  tags = merge({"Name": "${var.app_name}-${var.env}-db"}, var.common_tags)
 }
 
 # resource "aws_rds_cluster_instance" "sample-dev-rds-cl-instance" {
@@ -55,9 +51,5 @@ resource "aws_rds_cluster" "sample-dev-rds-cl" {
 #   auto_minor_version_upgrade   = true
 #   monitoring_role_arn          = aws_iam_role.sample-dev-rds-monitoring-role.arn
 #   depends_on                   = [aws_db_subnet_group.sample-dev-rds-sbgr]
-#   tags = {
-#     "Service": "${var.app_name}-${var.env}"
-#     "Env": "${var.env}"
-#     "Name": "${var.app_name}-${var.env}-db"
-#   }
+#  tags = merge({"Name": "${var.app_name}-${var.env}-db"}, var.common_tags)
 # }

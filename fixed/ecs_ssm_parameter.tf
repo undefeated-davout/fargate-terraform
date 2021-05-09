@@ -5,11 +5,7 @@ resource "aws_ssm_parameter" "sample-dev-param-db-host" {
   type        = "String"
   data_type   = "text"
   value       = aws_rds_cluster.sample-dev-rds-cl.endpoint
-  tags = {
-    "Service": "${var.app_name}-${var.env}"
-    "Env": "${var.env}"
-    "Name": "${var.app_name}-${var.env}-param-db-host"
-  }
+  tags = merge({"Name": "${var.app_name}-${var.env}-param-db-host"}, var.common_tags)
 }
 
 resource "aws_ssm_parameter" "sample-dev-param-db-name" {
@@ -19,11 +15,7 @@ resource "aws_ssm_parameter" "sample-dev-param-db-name" {
   type        = "String"
   data_type   = "text"
   value       = "hogehoge"
-  tags = {
-    "Service": "${var.app_name}-${var.env}"
-    "Env": "${var.env}"
-    "Name": "${var.app_name}-${var.env}-param-db-name"
-  }
+  tags = merge({"Name": "${var.app_name}-${var.env}-param-db-name"}, var.common_tags)
 }
 
 resource "aws_ssm_parameter" "sample-dev-param-db-password" {
@@ -35,16 +27,11 @@ resource "aws_ssm_parameter" "sample-dev-param-db-password" {
   key_id      = "alias/aws/ssm"
   # Terraform上ではDB用パスワード情報は管理しない。
   # 初回定義作成後に手動変更する。
-  value = "hogehoge"
+  value = "samplepassword"
   lifecycle {
     ignore_changes = [value]
   }
-
-  tags = {
-    "Service": "${var.app_name}-${var.env}"
-    "Env": "${var.env}"
-    "Name": "${var.app_name}-${var.env}-param-db-password"
-  }
+  tags = merge({"Name": "${var.app_name}-${var.env}-param-db-password"}, var.common_tags)
 }
 
 resource "aws_ssm_parameter" "sample-dev-param-db-username" {
@@ -54,9 +41,5 @@ resource "aws_ssm_parameter" "sample-dev-param-db-username" {
   type        = "String"
   data_type   = "text"
   value       = "hogehoge"
-  tags = {
-    "Service": "${var.app_name}-${var.env}"
-    "Env": "${var.env}"
-    "Name": "${var.app_name}-${var.env}-param-db-username"
-  }
+  tags = merge({"Name": "${var.app_name}-${var.env}-param-db-username"}, var.common_tags)
 }
