@@ -3,15 +3,13 @@
 ## 動作環境
 
 ```bash
-# terraformer実行時
-# terraform -v
-Terraform v0.13.7
-# terraformer -v
-version v0.8.13
+# Terraformer実行時
+# Terraform v0.13.7
+# Terraformer v0.8.13
 
 # terraform実行時
-terraform -v
-Terraform v0.15.1
+# Terraform v0.15.1
+# Terragrunt v0.29.2
 ```
 
 ## Terraformer
