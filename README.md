@@ -40,7 +40,7 @@ direnv allow
 
 ## 実行手順
 
-- cnapp_pemの名称を既存のpemファイル名に適宜修正
+- 変数部分を適宜変更
 
 ```bash
 cd fixed/aws/develop/
@@ -49,6 +49,20 @@ terraform plan
 # 確認＆適用
 terraform apply
 ```
+
+## 手動設定部分
+
+- WAF設定
+  - ブロック
+    - SQLインジェクション
+    - XSS
+  - 許可
+    - カスタムヘッダにIDがあるもののみ
+- DB
+  - インスタンス作成
+  - 初回パスワード設定
+- パラメータストア
+  - DBパスワード設定
 
 ## 削除時の注意
 
