@@ -1,6 +1,6 @@
 # ECR API呼び出し用（aws ecr loginコマンドなど）
 resource "aws_vpc_endpoint" "sample-dev-vpc-ep-ecr-api" {
-  service_name      = "com.amazonaws.ap-northeast-1.ecr.api"
+  service_name      = "com.amazonaws.${var.region}.ecr.api"
   vpc_endpoint_type = "Interface"
   vpc_id            = aws_vpc.sample-dev-vpc.id
   subnet_ids = [
@@ -18,7 +18,7 @@ resource "aws_vpc_endpoint" "sample-dev-vpc-ep-ecr-api" {
 
 # ECR用（docker pushコマンドなどのDockerクライアントコマンド呼び出し用）
 resource "aws_vpc_endpoint" "sample-dev-vpc-ep-dkr" {
-  service_name      = "com.amazonaws.ap-northeast-1.ecr.dkr"
+  service_name      = "com.amazonaws.${var.region}.ecr.dkr"
   vpc_endpoint_type = "Interface"
   vpc_id            = aws_vpc.sample-dev-vpc.id
   subnet_ids = [
@@ -36,7 +36,7 @@ resource "aws_vpc_endpoint" "sample-dev-vpc-ep-dkr" {
 
 # CloudWatchのlog用
 resource "aws_vpc_endpoint" "sample-dev-vpc-ep-logs" {
-  service_name      = "com.amazonaws.ap-northeast-1.logs"
+  service_name      = "com.amazonaws.${var.region}.logs"
   vpc_endpoint_type = "Interface"
   vpc_id            = aws_vpc.sample-dev-vpc.id
   subnet_ids = [
@@ -54,7 +54,7 @@ resource "aws_vpc_endpoint" "sample-dev-vpc-ep-logs" {
 
 # Systems Manager用（パラメータストア）
 resource "aws_vpc_endpoint" "sample-dev-vpc-ep-ssm" {
-  service_name      = "com.amazonaws.ap-northeast-1.ssm"
+  service_name      = "com.amazonaws.${var.region}.ssm"
   vpc_endpoint_type = "Interface"
   vpc_id            = aws_vpc.sample-dev-vpc.id
   subnet_ids = [
@@ -72,7 +72,7 @@ resource "aws_vpc_endpoint" "sample-dev-vpc-ep-ssm" {
 
 # S3用はGateway型（Dockerイメージ取得用）
 resource "aws_vpc_endpoint" "sample-dev-vpc-ep-s3" {
-  service_name      = "com.amazonaws.ap-northeast-1.s3"
+  service_name      = "com.amazonaws.${var.region}.s3"
   vpc_endpoint_type = "Gateway"
   vpc_id            = aws_vpc.sample-dev-vpc.id
   route_table_ids = [

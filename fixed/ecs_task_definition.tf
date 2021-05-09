@@ -18,7 +18,7 @@ resource "aws_ecs_task_definition" "sample-dev-ecs-tk" {
       "logDriver": "awslogs",
       "options": {
         "awslogs-group": "${aws_cloudwatch_log_group.sample-dev-log.id}",
-        "awslogs-region": "ap-northeast-1",
+        "awslogs-region": "${var.region}",
         "awslogs-stream-prefix": "ecs"
       }
     },

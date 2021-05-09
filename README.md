@@ -38,7 +38,7 @@ direnv allow
 
 ## 実行手順
 
-- 変数部分を適宜変更
+- 変数部分を適宜変更 `_variables.tf`
 
 ```bash
 cd fixed/aws/develop/

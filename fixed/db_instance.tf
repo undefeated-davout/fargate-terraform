@@ -9,8 +9,8 @@ resource "aws_rds_cluster" "sample-dev-rds-cl" {
   # deletion_protection = true
 
   availability_zones = [
-    "ap-northeast-1a",
-    "ap-northeast-1c"
+    "${var.region}a",
+    "${var.region}c"
   ]
 
   # DB情報
