@@ -34,5 +34,5 @@ override.tf.json
 terraform.rc
 
 # custom
+.DS_Store
 .envrc
-

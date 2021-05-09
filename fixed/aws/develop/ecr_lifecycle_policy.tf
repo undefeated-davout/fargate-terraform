@@ -1,0 +1,23 @@
+resource "aws_ecr_lifecycle_policy" "sample-dev-ecr-lc-policy" {
+  repository = "sample-dev"
+  depends_on = [aws_ecr_repository.sample-dev-ecr-repository]
+
+  policy = <<POLICY
+{
+  "rules": [
+    {
+      "action": {
+        "type": "expire"
+      },
+      "description": "古い世代のイメージを削除",
+      "rulePriority": 1,
+      "selection": {
+        "countNumber": 30,
+        "countType": "imageCountMoreThan",
+        "tagStatus": "any"
+      }
+    }
+  ]
+}
+POLICY
+}
