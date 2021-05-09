@@ -10,9 +10,9 @@ resource "aws_vpc_endpoint" "sample-dev-vpc-ep-ecr-api" {
   private_dns_enabled = true
   security_group_ids  = [aws_security_group.sample-dev-sg-vpc-endpoint.id]
   tags = {
-    Service = "sample-dev"
-    Env     = "dev"
-    Name    = "sample-dev-vpc-ep-ecr-api"
+    "Service": "${var.app_name}-${var.env}"
+    "Env": "${var.env}"
+    "Name": "${var.app_name}-${var.env}-vpc-ep-ecr-api"
   }
 }
 
@@ -28,9 +28,9 @@ resource "aws_vpc_endpoint" "sample-dev-vpc-ep-dkr" {
   private_dns_enabled = true
   security_group_ids  = [aws_security_group.sample-dev-sg-vpc-endpoint.id]
   tags = {
-    Service = "sample-dev"
-    Env     = "dev"
-    Name    = "sample-dev-vpc-ep-dkr"
+    "Service": "${var.app_name}-${var.env}"
+    "Env": "${var.env}"
+    "Name": "${var.app_name}-${var.env}-vpc-ep-dkr"
   }
 }
 
@@ -46,9 +46,9 @@ resource "aws_vpc_endpoint" "sample-dev-vpc-ep-logs" {
   private_dns_enabled = true
   security_group_ids  = [aws_security_group.sample-dev-sg-vpc-endpoint.id]
   tags = {
-    Service = "sample-dev"
-    Env     = "dev"
-    Name    = "sample-dev-vpc-ep-logs"
+    "Service": "${var.app_name}-${var.env}"
+    "Env": "${var.env}"
+    "Name": "${var.app_name}-${var.env}-vpc-ep-logs"
   }
 }
 
@@ -63,11 +63,7 @@ resource "aws_vpc_endpoint" "sample-dev-vpc-ep-ssm" {
   ]
   private_dns_enabled = true
   security_group_ids  = [aws_security_group.sample-dev-sg-vpc-endpoint.id]
-  tags = {
-    Service = "sample-dev"
-    Env     = "dev"
-    Name    = "sample-dev-vpc-ep-ssm"
-  }
+  tags = merge({"Name": "${var.app_name}-${var.env}-vpc-ep-ssm"}, var.common_tags)
 }
 
 # S3用はGateway型（Dockerイメージ取得用）
@@ -79,9 +75,5 @@ resource "aws_vpc_endpoint" "sample-dev-vpc-ep-s3" {
     aws_route_table.sample-dev-rt-app.id,
     aws_route_table.sample-dev-rt-manage.id
   ]
-  tags = {
-    Service = "sample-dev"
-    Env     = "dev"
-    Name    = "sample-dev-vpc-ep-s3"
-  }
+  tags = merge({"Name": "${var.app_name}-${var.env}-vpc-ep-s3"}, var.common_tags)
 }

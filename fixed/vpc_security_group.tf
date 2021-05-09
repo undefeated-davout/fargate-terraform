@@ -26,9 +26,9 @@ resource "aws_security_group" "sample-dev-sg-ingress" {
   }
 
   tags = {
-    Service = "sample-dev"
-    Env     = "dev"
-    Name    = "sample-dev-sg-ingress"
+    "Service": "${var.app_name}-${var.env}"
+    "Env": "${var.env}"
+    "Name": "${var.app_name}-${var.env}-sg-ingress"
   }
 }
 
@@ -70,9 +70,9 @@ resource "aws_security_group" "sample-dev-sg-container" {
 
 
   tags = {
-    Service = "sample-dev"
-    Env     = "dev"
-    Name    = "sample-dev-sg-container"
+    "Service": "${var.app_name}-${var.env}"
+    "Env": "${var.env}"
+    "Name": "${var.app_name}-${var.env}-sg-container"
   }
 }
 
@@ -105,9 +105,9 @@ resource "aws_security_group" "sample-dev-sg-db" {
   }
 
   tags = {
-    Service = "sample-dev"
-    Env     = "dev"
-    Name    = "sample-dev-sg-db"
+    "Service": "${var.app_name}-${var.env}"
+    "Env": "${var.env}"
+    "Name": "${var.app_name}-${var.env}-sg-db"
   }
 }
 
@@ -131,9 +131,9 @@ resource "aws_security_group" "sample-dev-sg-manage" {
   }
 
   tags = {
-    Service = "sample-dev"
-    Env     = "dev"
-    Name    = "sample-dev-sg-manage"
+    "Service": "${var.app_name}-${var.env}"
+    "Env": "${var.env}"
+    "Name": "${var.app_name}-${var.env}-sg-manage"
   }
 }
 
@@ -166,8 +166,8 @@ resource "aws_security_group" "sample-dev-sg-vpc-endpoint" {
   }
 
   tags = {
-    Service = "sample-dev"
-    Env     = "dev"
-    Name    = "sample-dev-sg-vpc-endpoint"
+    "Service": "${var.app_name}-${var.env}"
+    "Env": "${var.env}"
+    "Name": "${var.app_name}-${var.env}-sg-vpc-endpoint"
   }
 }

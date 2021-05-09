@@ -14,15 +14,15 @@ resource "aws_instance" "sample-dev-ec2-manage" {
     volume_type           = "gp2"
     delete_on_termination = "true"
     tags = {
-      Service = "sample-dev"
-      Env     = "dev"
-      Name    = "sample-dev-ebs-manage"
+      "Service": "${var.app_name}-${var.env}"
+      "Env": "${var.env}"
+      "Name": "${var.app_name}-${var.env}-ebs-manage"
     }
   }
 
   tags = {
-    Service = "sample-dev"
-    Env     = "dev"
-    Name    = "sample-dev-ec2-manage"
+    "Service": "${var.app_name}-${var.env}"
+    "Env": "${var.env}"
+    "Name": "${var.app_name}-${var.env}-ec2-manage"
   }
 }

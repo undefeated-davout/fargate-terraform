@@ -3,8 +3,8 @@ resource "aws_vpc" "sample-dev-vpc" {
   enable_dns_hostnames = "true"
   instance_tenancy     = "default"
   tags = {
-    Service = "sample-dev"
-    Env     = "dev"
-    Name    = "sample-dev-vpc"
+    "Service": "${var.app_name}-${var.env}"
+    "Env": "${var.env}"
+    "Name": "${var.app_name}-${var.env}-vpc"
   }
 }

@@ -37,9 +37,9 @@ resource "aws_rds_cluster" "sample-dev-rds-cl" {
   }
   depends_on = [aws_db_subnet_group.sample-dev-rds-sbgr]
   tags = {
-    Service = "sample-dev"
-    Env     = "dev"
-    Name    = "sample-dev-db"
+    "Service": "${var.app_name}-${var.env}"
+    "Env": "${var.env}"
+    "Name": "${var.app_name}-${var.env}-db"
   }
 }
 
@@ -56,8 +56,8 @@ resource "aws_rds_cluster" "sample-dev-rds-cl" {
 #   monitoring_role_arn          = aws_iam_role.sample-dev-rds-monitoring-role.arn
 #   depends_on                   = [aws_db_subnet_group.sample-dev-rds-sbgr]
 #   tags = {
-#     Service = "sample-dev"
-#     Env     = "dev"
-#     Name    = "sample-dev-db"
+#     "Service": "${var.app_name}-${var.env}"
+#     "Env": "${var.env}"
+#     "Name": "${var.app_name}-${var.env}-db"
 #   }
 # }

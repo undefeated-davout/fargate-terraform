@@ -58,8 +58,8 @@ JSON
   }
 
   tags = {
-    Service = "sample-dev"
-    Env     = "dev"
-    Name    = "sample-dev-ecs-tk"
+    "Service": "${var.app_name}-${var.env}"
+    "Env": "${var.env}"
+    "Name": "${var.app_name}-${var.env}-ecs-tk"
   }
 }

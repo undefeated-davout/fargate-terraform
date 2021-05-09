@@ -18,8 +18,8 @@ resource "aws_iam_policy" "sample-dev-GettingParameterStorePolicy" {
 }
 POLICY
   tags = {
-    Service = "sample-dev"
-    Env     = "dev"
-    Name    = "sample-dev-GettingParameterStorePolicy"
+    "Service": "${var.app_name}-${var.env}"
+    "Env": "${var.env}"
+    "Name": "${var.app_name}-${var.env}-GettingParameterStorePolicy"
   }
 }

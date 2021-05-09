@@ -17,9 +17,9 @@ resource "aws_lb_target_group" "sample-dev-tg-blue" {
   }
 
   tags = {
-    Service = "sample-dev"
-    Env     = "dev"
-    Name    = "sample-dev-tg-blue"
+    "Service": "${var.app_name}-${var.env}"
+    "Env": "${var.env}"
+    "Name": "${var.app_name}-${var.env}-tg-blue"
   }
 }
 
@@ -42,8 +42,8 @@ resource "aws_lb_target_group" "sample-dev-tg-green" {
   }
 
   tags = {
-    Service = "sample-dev"
-    Env     = "dev"
-    Name    = "sample-dev-tg-green"
+    "Service": "${var.app_name}-${var.env}"
+    "Env": "${var.env}"
+    "Name": "${var.app_name}-${var.env}-tg-green"
   }
 }

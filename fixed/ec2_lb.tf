@@ -9,8 +9,8 @@ resource "aws_lb" "sample-dev-alb-ingress" {
   ]
   security_groups = [aws_security_group.sample-dev-sg-ingress.id]
   tags = {
-    Service = "sample-dev"
-    Env     = "dev"
-    Name    = "sample-dev-alb-ingress"
+    "Service": "${var.app_name}-${var.env}"
+    "Env": "${var.env}"
+    "Name": "${var.app_name}-${var.env}-alb-ingress"
   }
 }

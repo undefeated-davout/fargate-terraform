@@ -45,9 +45,9 @@ resource "aws_ecs_service" "sample-dev-ecs-sb" {
   }
 
   tags = {
-    Service = "sample-dev"
-    Env     = "dev"
-    Name    = "sample-dev-ecs-sb"
+    "Service": "${var.app_name}-${var.env}"
+    "Env": "${var.env}"
+    "Name": "${var.app_name}-${var.env}-ecs-sb"
   }
 }
 

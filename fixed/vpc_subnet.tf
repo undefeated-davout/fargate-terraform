@@ -4,9 +4,9 @@ resource "aws_subnet" "sample-dev-sb-pb-ingress-1a" {
   availability_zone = "${var.region}a"
   vpc_id            = aws_vpc.sample-dev-vpc.id
   tags = {
-    Service = "sample-dev"
-    Env     = "dev"
-    Name    = "sample-dev-sb-pb-ingress-1a"
+    "Service": "${var.app_name}-${var.env}"
+    "Env": "${var.env}"
+    "Name": "${var.app_name}-${var.env}-sb-pb-ingress-1a"
   }
 }
 
@@ -15,9 +15,9 @@ resource "aws_subnet" "sample-dev-sb-pb-ingress-1c" {
   availability_zone = "${var.region}c"
   vpc_id            = aws_vpc.sample-dev-vpc.id
   tags = {
-    Service = "sample-dev"
-    Env     = "dev"
-    Name    = "sample-dev-sb-pb-ingress-1c"
+    "Service": "${var.app_name}-${var.env}"
+    "Env": "${var.env}"
+    "Name": "${var.app_name}-${var.env}-sb-pb-ingress-1c"
   }
 }
 
@@ -27,9 +27,9 @@ resource "aws_subnet" "sample-dev-sb-pr-container-1a" {
   availability_zone = "${var.region}a"
   vpc_id            = aws_vpc.sample-dev-vpc.id
   tags = {
-    Service = "sample-dev"
-    Env     = "dev"
-    Name    = "sample-dev-sb-pr-container-1a"
+    "Service": "${var.app_name}-${var.env}"
+    "Env": "${var.env}"
+    "Name": "${var.app_name}-${var.env}-sb-pr-container-1a"
   }
 }
 
@@ -50,9 +50,9 @@ resource "aws_subnet" "sample-dev-sb-pr-db-1a" {
   availability_zone = "${var.region}a"
   vpc_id            = aws_vpc.sample-dev-vpc.id
   tags = {
-    Service = "sample-dev"
-    Env     = "dev"
-    Name    = "sample-dev-sb-pr-db-1a"
+    "Service": "${var.app_name}-${var.env}"
+    "Env": "${var.env}"
+    "Name": "${var.app_name}-${var.env}-sb-pr-db-1a"
   }
 }
 
@@ -61,9 +61,9 @@ resource "aws_subnet" "sample-dev-sb-pr-db-1c" {
   availability_zone = "${var.region}c"
   vpc_id            = aws_vpc.sample-dev-vpc.id
   tags = {
-    Service = "sample-dev"
-    Env     = "dev"
-    Name    = "sample-dev-sb-pr-db-1c"
+    "Service": "${var.app_name}-${var.env}"
+    "Env": "${var.env}"
+    "Name": "${var.app_name}-${var.env}-sb-pr-db-1c"
   }
 }
 
@@ -73,9 +73,9 @@ resource "aws_subnet" "sample-dev-sb-pb-manage-1a" {
   availability_zone = "${var.region}a"
   vpc_id            = aws_vpc.sample-dev-vpc.id
   tags = {
-    Service = "sample-dev"
-    Env     = "dev"
-    Name    = "sample-dev-sb-pb-manage-1a"
+    "Service": "${var.app_name}-${var.env}"
+    "Env": "${var.env}"
+    "Name": "${var.app_name}-${var.env}-sb-pb-manage-1a"
   }
 }
 # 踏み台サーバ用（予備）
@@ -84,9 +84,9 @@ resource "aws_subnet" "sample-dev-sb-pb-manage-1c" {
   availability_zone = "${var.region}c"
   vpc_id            = aws_vpc.sample-dev-vpc.id
   tags = {
-    Service = "sample-dev"
-    Env     = "dev"
-    Name    = "sample-dev-sb-pb-manage-1c"
+    "Service": "${var.app_name}-${var.env}"
+    "Env": "${var.env}"
+    "Name": "${var.app_name}-${var.env}-sb-pb-manage-1c"
   }
 }
 
@@ -96,9 +96,9 @@ resource "aws_subnet" "sample-dev-sb-pr-egress-1a" {
   availability_zone = "${var.region}a"
   vpc_id            = aws_vpc.sample-dev-vpc.id
   tags = {
-    Service = "sample-dev"
-    Env     = "dev"
-    Name    = "sample-dev-sb-pr-egress-1a"
+    "Service": "${var.app_name}-${var.env}"
+    "Env": "${var.env}"
+    "Name": "${var.app_name}-${var.env}-sb-pr-egress-1a"
   }
 }
 
@@ -107,8 +107,8 @@ resource "aws_subnet" "sample-dev-sb-pr-egress-1c" {
   availability_zone = "${var.region}c"
   vpc_id            = aws_vpc.sample-dev-vpc.id
   tags = {
-    Service = "sample-dev"
-    Env     = "dev"
-    Name    = "sample-dev-sb-pr-egress-1c"
+    "Service": "${var.app_name}-${var.env}"
+    "Env": "${var.env}"
+    "Name": "${var.app_name}-${var.env}-sb-pr-egress-1c"
   }
 }

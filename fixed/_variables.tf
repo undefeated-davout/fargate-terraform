@@ -3,3 +3,7 @@ variable "region" {default = "ap-northeast-1"}
 variable "app_name" {default = "sampleapp"}
 variable "env" {default = "dev"}
 variable "database_name" {default = "sampledb"}
+variable "common_tags" {default = {
+  "Service": "sampleapp-dev"
+  "Env": "dev"
+}}

@@ -6,8 +6,8 @@ resource "aws_db_subnet_group" "sample-dev-rds-sbgr" {
     aws_subnet.sample-dev-sb-pr-db-1c.id
   ]
   tags = {
-    Service = "sample-dev"
-    Env     = "dev"
-    Name    = "sample-dev-rds-sbgr"
+    "Service": "${var.app_name}-${var.env}"
+    "Env": "${var.env}"
+    "Name": "${var.app_name}-${var.env}-rds-sbgr"
   }
 }

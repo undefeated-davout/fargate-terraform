@@ -6,9 +6,9 @@ resource "aws_ssm_parameter" "sample-dev-param-db-host" {
   data_type   = "text"
   value       = aws_rds_cluster.sample-dev-rds-cl.endpoint
   tags = {
-    Service = "sample-dev"
-    Env     = "dev"
-    Name    = "sample-dev-param-db-host"
+    "Service": "${var.app_name}-${var.env}"
+    "Env": "${var.env}"
+    "Name": "${var.app_name}-${var.env}-param-db-host"
   }
 }
 
@@ -20,9 +20,9 @@ resource "aws_ssm_parameter" "sample-dev-param-db-name" {
   data_type   = "text"
   value       = "hogehoge"
   tags = {
-    Service = "sample-dev"
-    Env     = "dev"
-    Name    = "sample-dev-param-db-name"
+    "Service": "${var.app_name}-${var.env}"
+    "Env": "${var.env}"
+    "Name": "${var.app_name}-${var.env}-param-db-name"
   }
 }
 
@@ -41,9 +41,9 @@ resource "aws_ssm_parameter" "sample-dev-param-db-password" {
   }
 
   tags = {
-    Service = "sample-dev"
-    Env     = "dev"
-    Name    = "sample-dev-param-db-password"
+    "Service": "${var.app_name}-${var.env}"
+    "Env": "${var.env}"
+    "Name": "${var.app_name}-${var.env}-param-db-password"
   }
 }
 
@@ -55,8 +55,8 @@ resource "aws_ssm_parameter" "sample-dev-param-db-username" {
   data_type   = "text"
   value       = "hogehoge"
   tags = {
-    Service = "sample-dev"
-    Env     = "dev"
-    Name    = "sample-dev-param-db-username"
+    "Service": "${var.app_name}-${var.env}"
+    "Env": "${var.env}"
+    "Name": "${var.app_name}-${var.env}-param-db-username"
   }
 }

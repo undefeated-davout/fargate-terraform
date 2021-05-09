@@ -11,8 +11,8 @@ resource "aws_ecs_cluster" "sample-dev-ecs-cluster" {
     value = "enabled"
   }
   tags = {
-    Service = "sample-dev"
-    Env     = "dev"
-    Name    = "sample-dev-ecs-cluster"
+    "Service": "${var.app_name}-${var.env}"
+    "Env": "${var.env}"
+    "Name": "${var.app_name}-${var.env}-ecs-cluster"
   }
 }
