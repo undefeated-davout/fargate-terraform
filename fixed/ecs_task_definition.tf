@@ -39,12 +39,16 @@ resource "aws_ecs_task_definition" "ecs-tk" {
         "valueFrom": "${local.app_name}-${local.env}-param-db-name"
       },
       {
+        "name": "${local.app_name}-${local.env}_DB_USERNAME",
+        "valueFrom": "${local.app_name}-${local.env}-param-db-username"
+      },
+      {
         "name": "${local.app_name}-${local.env}_DB_PASSWORD",
         "valueFrom": "${local.app_name}-${local.env}-param-db-password"
       },
       {
-        "name": "${local.app_name}-${local.env}_DB_USERNAME",
-        "valueFrom": "${local.app_name}-${local.env}-param-db-username"
+        "name": "${local.app_name}-${local.env}_S3_BUCKET_NAME",
+        "valueFrom": "${local.app_name}-${local.env}-param-s3-bucket-name"
       }
     ]
   }

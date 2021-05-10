@@ -1,3 +1,4 @@
+// DB
 resource "aws_ssm_parameter" "param-db-host" {
   name        = "${local.app_name}-${local.env}-param-db-host"
   description = "DB host name"
@@ -14,8 +15,18 @@ resource "aws_ssm_parameter" "param-db-name" {
   tier        = "Standard"
   type        = "String"
   data_type   = "text"
-  value       = "hogehoge"
+  value       = "${local.db_name}"
   tags = merge({"Name": "${local.app_name}-${local.env}-param-db-name"}, local.common_tags)
+}
+
+resource "aws_ssm_parameter" "param-db-username" {
+  name        = "${local.app_name}-${local.env}-param-db-username"
+  description = "DB user name"
+  tier        = "Standard"
+  type        = "String"
+  data_type   = "text"
+  value       = "${local.db_user_name}"
+  tags = merge({"Name": "${local.app_name}-${local.env}-param-db-username"}, local.common_tags)
 }
 
 resource "aws_ssm_parameter" "param-db-password" {
@@ -34,12 +45,13 @@ resource "aws_ssm_parameter" "param-db-password" {
   tags = merge({"Name": "${local.app_name}-${local.env}-param-db-password"}, local.common_tags)
 }
 
-resource "aws_ssm_parameter" "param-db-username" {
-  name        = "${local.app_name}-${local.env}-param-db-username"
+// S3
+resource "aws_ssm_parameter" "param-s3-bucket-name" {
+  name        = "${local.app_name}-${local.env}-param-s3-bucket-name"
   description = "DB user name"
   tier        = "Standard"
   type        = "String"
   data_type   = "text"
-  value       = "hogehoge"
-  tags = merge({"Name": "${local.app_name}-${local.env}-param-db-username"}, local.common_tags)
+  value       = "${local.s3_bucket_name}"
+  tags = merge({"Name": "${local.app_name}-${local.env}-param-s3-bucket-name"}, local.common_tags)
 }

@@ -1,6 +1,6 @@
 resource "aws_instance" "ec2-manage" {
   // Amazon Linux 2 AMI (HVM), SSD Volume Type - ami-0ca38c7440de1749a (64 ビット x86)
-  ami                         = "ami-0ca38c7440de1749a"
+  ami                         = "${local.manage_server_ami}"
   instance_type               = "t2.micro"
   availability_zone           = "${local.region}a"
   associate_public_ip_address = "true"
