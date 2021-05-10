@@ -1,6 +1,6 @@
-resource "aws_ecr_lifecycle_policy" "sample-dev-ecr-lc-policy" {
+resource "aws_ecr_lifecycle_policy" "ecr-lc-policy" {
   repository = "sample-dev"
-  depends_on = [aws_ecr_repository.sample-dev-ecr-repository]
+  depends_on = [aws_ecr_repository.ecr-repository]
 
   policy = <<POLICY
 {

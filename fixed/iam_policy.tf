@@ -1,5 +1,5 @@
-resource "aws_iam_policy" "sample-dev-GettingParameterStorePolicy" {
-  name   = "sample-dev-GettingParameterStorePolicy"
+resource "aws_iam_policy" "GettingParameterStorePolicy" {
+  name   = "GettingParameterStorePolicy"
   policy = <<POLICY
 {
   "Statement": [

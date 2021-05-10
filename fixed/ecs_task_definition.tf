@@ -1,15 +1,15 @@
-resource "aws_ecs_task_definition" "sample-dev-ecs-tk" {
-  family                   = "sample-dev-ecs-tk"
+resource "aws_ecs_task_definition" "ecs-tk" {
+  family                   = "ecs-tk"
   requires_compatibilities = ["FARGATE"]
   network_mode             = "awsvpc"
-  execution_role_arn       = aws_iam_role.sample-dev-ecsTaskExecutionRole.arn
+  execution_role_arn       = aws_iam_role.ecsTaskExecutionRole.arn
   cpu                      = "512"
   memory                   = "1024"
   container_definitions    = <<JSON
 [
   {
     "name": "sample-dev",
-    "image": "${aws_ecr_repository.sample-dev-ecr-repository.repository_url}:v1",
+    "image": "${aws_ecr_repository.ecr-repository.repository_url}:v1",
     "cpu": 256,
     "memoryReservation": 512,
     "essential": true,
@@ -17,7 +17,7 @@ resource "aws_ecs_task_definition" "sample-dev-ecs-tk" {
     "logConfiguration": {
       "logDriver": "awslogs",
       "options": {
-        "awslogs-group": "${aws_cloudwatch_log_group.sample-dev-log.id}",
+        "awslogs-group": "${aws_cloudwatch_log_group.log.id}",
         "awslogs-region": "${var.region}",
         "awslogs-stream-prefix": "ecs"
       }
@@ -32,19 +32,19 @@ resource "aws_ecs_task_definition" "sample-dev-ecs-tk" {
     "secrets": [
       {
         "name": "sample-dev_DB_HOST",
-        "valueFrom": "sample-dev-param-db-host"
+        "valueFrom": "param-db-host"
       },
       {
         "name": "sample-dev_DB_NAME",
-        "valueFrom": "sample-dev-param-db-name"
+        "valueFrom": "param-db-name"
       },
       {
         "name": "sample-dev_DB_PASSWORD",
-        "valueFrom": "sample-dev-param-db-password"
+        "valueFrom": "param-db-password"
       },
       {
         "name": "sample-dev_DB_USERNAME",
-        "valueFrom": "sample-dev-param-db-username"
+        "valueFrom": "param-db-username"
       }
     ]
   }

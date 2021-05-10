@@ -1,6 +1,6 @@
-resource "aws_lb_target_group" "sample-dev-tg-blue" {
-  name        = "sample-dev-tg-blue"
-  vpc_id      = aws_vpc.sample-dev-vpc.id
+resource "aws_lb_target_group" "tg-blue" {
+  name        = "tg-blue"
+  vpc_id      = aws_vpc.vpc.id
   target_type = "ip"
   protocol    = "HTTP"
   port        = "80"
@@ -18,9 +18,9 @@ resource "aws_lb_target_group" "sample-dev-tg-blue" {
   tags = merge({"Name": "${var.app_name}-${var.env}-tg-blue"}, var.common_tags)
 }
 
-resource "aws_lb_target_group" "sample-dev-tg-green" {
-  name        = "sample-dev-tg-green"
-  vpc_id      = aws_vpc.sample-dev-vpc.id
+resource "aws_lb_target_group" "tg-green" {
+  name        = "tg-green"
+  vpc_id      = aws_vpc.vpc.id
   target_type = "ip"
   protocol    = "HTTP"
   port        = "80"

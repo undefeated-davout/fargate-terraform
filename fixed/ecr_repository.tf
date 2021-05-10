@@ -1,4 +1,4 @@
-resource "aws_ecr_repository" "sample-dev-ecr-repository" {
+resource "aws_ecr_repository" "ecr-repository" {
   name                 = "sample-dev"
   image_tag_mutability = "IMMUTABLE"
   image_scanning_configuration {

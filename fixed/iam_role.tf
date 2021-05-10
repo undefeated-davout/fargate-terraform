@@ -1,8 +1,8 @@
-resource "aws_iam_role" "sample-dev-ecsTaskExecutionRole" {
-  name = "sample-dev-ecsTaskExecutionRole"
+resource "aws_iam_role" "ecsTaskExecutionRole" {
+  name = "ecsTaskExecutionRole"
   managed_policy_arns = [
     "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy",
-    aws_iam_policy.sample-dev-GettingParameterStorePolicy.arn
+    aws_iam_policy.GettingParameterStorePolicy.arn
   ]
   assume_role_policy = <<POLICY
 {
@@ -21,11 +21,11 @@ resource "aws_iam_role" "sample-dev-ecsTaskExecutionRole" {
 POLICY
 }
 
-resource "aws_iam_role" "sample-dev-rds-monitoring-role" {
-  name               = "sample-dev-rds-monitoring-role"
-  assume_role_policy = data.aws_iam_policy_document.sample-dev-rds-monitoring.json
+resource "aws_iam_role" "rds-monitoring-role" {
+  name               = "rds-monitoring-role"
+  assume_role_policy = data.aws_iam_policy_document.rds-monitoring.json
 }
-data "aws_iam_policy_document" "sample-dev-rds-monitoring" {
+data "aws_iam_policy_document" "rds-monitoring" {
   version = "2012-10-17"
   statement {
     sid    = "RDSMonitoringRole"

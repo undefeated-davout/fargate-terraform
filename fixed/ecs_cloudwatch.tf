@@ -1,4 +1,4 @@
-resource "aws_cloudwatch_log_group" "sample-dev-log" {
-  name              = "/ecs/sample-dev-ecs-tk"
+resource "aws_cloudwatch_log_group" "log" {
+  name              = "/ecs/ecs-tk"
   retention_in_days = 30
 }
