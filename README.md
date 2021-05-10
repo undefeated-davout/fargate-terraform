@@ -40,7 +40,7 @@ direnv allow
 - 変数部分を適宜変更 `_variables.tf`
 
 ```bash
-cd fixed/aws/develop/
+cd fixed/
 # 確認用
 terraform plan
 # 確認＆適用
