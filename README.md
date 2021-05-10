@@ -9,7 +9,6 @@
 
 # terraform実行時
 # Terraform v0.15.1
-# Terragrunt v0.29.2
 ```
 
 ## Terraformer
