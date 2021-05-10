@@ -11,17 +11,6 @@
 # Terraform v0.15.1
 ```
 
-## Terraformer
-
-```bash
-# 初期処理
-echo 'provider "aws" {}' > init.tf
-terraform init
-
-# 設定情報をAWSから取得（GUIで作成した情報をもとにTerrarformファイルを作成する）
-terraformer import aws --resources=vpc,igw,subnet,route_table,alb,sg,ecr,ec2_instance,ebs,eni,eip,ecs,cloudwatch,logs,rds,ssm,iam,s3 --path-pattern {output}/{provider}/develop/ --regions=ap-northeast-1 --filter="Name=tags.Env;Value=dev"
-```
-
 ## AWS接続
 
 ```bash
@@ -81,3 +70,14 @@ terraform apply
 
 - 反映済み扱いになってしまって `terraform apply` では上書きできない時
   - 例：`terraform taint aws_ecs_task_definition.ecs-tk` のようにtaintで次回のapplyコマンドで強制上書きするよう指示
+
+## TerraformerによるGUI入力値からTerraformファイルのエクスポート
+
+```bash
+# 初期処理
+echo 'provider "aws" {}' > init.tf
+terraform init
+
+# 設定情報をAWSから取得
+terraformer import aws --resources=vpc,igw,subnet,route_table,alb,sg,ecr,ec2_instance,ebs,eni,eip,ecs,cloudwatch,logs,rds,ssm,iam,s3 --path-pattern {output}/{provider}/develop/ --regions=ap-northeast-1 --filter="Name=tags.Env;Value=dev"
+```
