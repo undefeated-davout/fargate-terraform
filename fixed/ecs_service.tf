@@ -1,6 +1,6 @@
 resource "aws_ecs_service" "ecs-sb" {
   # サービスの設定
-  name                               = "ecs-sb"
+  name                               = "${local.app_name}-${local.env}-ecs-sb"
   launch_type                        = "FARGATE"
   task_definition                    = aws_ecs_task_definition.ecs-tk.arn
   platform_version                   = "LATEST"
@@ -56,7 +56,7 @@ resource "aws_appautoscaling_target" "as-target" {
 }
 
 resource "aws_appautoscaling_policy" "as-policy" {
-  name        = "ecs-scalingpolicy"
+  name        = "${local.app_name}-${local.env}-ecs-scalingpolicy"
   policy_type = "TargetTrackingScaling"
   resource_id = "service/ecs-cluster/ecs-sb"
 
@@ -77,7 +77,7 @@ resource "aws_appautoscaling_policy" "as-policy" {
 }
 
 resource "aws_service_discovery_service" "sds" {
-  name = "ecs-sb"
+  name = "${local.app_name}-${local.env}-ecs-sb"
 
   dns_config {
     namespace_id = aws_service_discovery_private_dns_namespace.dnsn.id
@@ -91,6 +91,6 @@ resource "aws_service_discovery_service" "sds" {
 }
 
 resource "aws_service_discovery_private_dns_namespace" "dnsn" {
-  name = "local"
+  name = "${local.app_name}-${local.env}-local"
   vpc  = aws_vpc.vpc.id
 }

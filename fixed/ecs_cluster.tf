@@ -1,5 +1,5 @@
 resource "aws_ecs_cluster" "ecs-cluster" {
-  name               = "ecs-cluster"
+  name               = "${local.app_name}-${local.env}-ecs-cluster"
   capacity_providers = ["FARGATE", "FARGATE_SPOT"]
   default_capacity_provider_strategy {
     base              = "0"

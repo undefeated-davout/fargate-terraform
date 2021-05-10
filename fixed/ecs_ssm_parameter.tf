@@ -1,5 +1,5 @@
 resource "aws_ssm_parameter" "param-db-host" {
-  name        = "param-db-host"
+  name        = "${local.app_name}-${local.env}-param-db-host"
   description = "DB host name"
   tier        = "Standard"
   type        = "String"
@@ -9,7 +9,7 @@ resource "aws_ssm_parameter" "param-db-host" {
 }
 
 resource "aws_ssm_parameter" "param-db-name" {
-  name        = "param-db-name"
+  name        = "${local.app_name}-${local.env}-param-db-name"
   description = "DB name"
   tier        = "Standard"
   type        = "String"
@@ -19,7 +19,7 @@ resource "aws_ssm_parameter" "param-db-name" {
 }
 
 resource "aws_ssm_parameter" "param-db-password" {
-  name        = "param-db-password"
+  name        = "${local.app_name}-${local.env}-param-db-password"
   description = "DB user password"
   tier        = "Standard"
   type        = "SecureString"
@@ -35,7 +35,7 @@ resource "aws_ssm_parameter" "param-db-password" {
 }
 
 resource "aws_ssm_parameter" "param-db-username" {
-  name        = "param-db-username"
+  name        = "${local.app_name}-${local.env}-param-db-username"
   description = "DB user name"
   tier        = "Standard"
   type        = "String"

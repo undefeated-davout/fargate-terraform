@@ -1,5 +1,5 @@
 resource "aws_lb" "alb-ingress" {
-  name               = "alb-ingress"
+  name               = "${local.app_name}-${local.env}-alb-ingress"
   load_balancer_type = "application"
   internal           = "false"
   ip_address_type    = "ipv4"

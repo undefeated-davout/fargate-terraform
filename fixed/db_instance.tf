@@ -21,7 +21,7 @@ resource "aws_rds_cluster" "rds-cl" {
   preferred_maintenance_window    = "sat:20:00-sat:20:30"
   port                            = 3306
   vpc_security_group_ids          = [aws_security_group.sg-db.id]
-  db_subnet_group_name            = "rds-sbgr"
+  db_subnet_group_name            = "${local.app_name}-${local.env}-rds-sbgr"
   storage_encrypted               = true
   apply_immediately               = true
   enabled_cloudwatch_logs_exports = ["audit", "error", "slowquery"]

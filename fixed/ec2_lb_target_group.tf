@@ -1,5 +1,5 @@
 resource "aws_lb_target_group" "tg-blue" {
-  name        = "tg-blue"
+  name        = "${local.app_name}-${local.env}-tg-blue"
   vpc_id      = aws_vpc.vpc.id
   target_type = "ip"
   protocol    = "HTTP"
@@ -19,7 +19,7 @@ resource "aws_lb_target_group" "tg-blue" {
 }
 
 resource "aws_lb_target_group" "tg-green" {
-  name        = "tg-green"
+  name        = "${local.app_name}-${local.env}-tg-green"
   vpc_id      = aws_vpc.vpc.id
   target_type = "ip"
   protocol    = "HTTP"

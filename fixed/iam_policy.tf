@@ -1,5 +1,5 @@
 resource "aws_iam_policy" "GettingParameterStorePolicy" {
-  name   = "GettingParameterStorePolicy"
+  name   = "${local.app_name}-${local.env}-GettingParameterStorePolicy"
   policy = <<POLICY
 {
   "Statement": [

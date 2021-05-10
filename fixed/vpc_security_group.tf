@@ -1,5 +1,5 @@
 resource "aws_security_group" "sg-ingress" {
-  name        = "sg-ingress"
+  name        = "${local.app_name}-${local.env}-sg-ingress"
   description = "sg of Ingress"
   vpc_id      = aws_vpc.vpc.id
   ingress {
@@ -25,7 +25,7 @@ resource "aws_security_group" "sg-ingress" {
 }
 
 resource "aws_security_group" "sg-container" {
-  name        = "sg-container"
+  name        = "${local.app_name}-${local.env}-sg-container"
   description = "sg of VPC Container App"
   vpc_id      = aws_vpc.vpc.id
   ingress {
@@ -59,7 +59,7 @@ resource "aws_security_group" "sg-container" {
 }
 
 resource "aws_security_group" "sg-db" {
-  name        = "sg-db"
+  name        = "${local.app_name}-${local.env}-sg-db"
   description = "sg of DB"
   vpc_id      = aws_vpc.vpc.id
   ingress {
@@ -86,7 +86,7 @@ resource "aws_security_group" "sg-db" {
 }
 
 resource "aws_security_group" "sg-manage" {
-  name        = "sg-manage"
+  name        = "${local.app_name}-${local.env}-sg-manage"
   description = "sg of manage"
   vpc_id      = aws_vpc.vpc.id
   ingress {
@@ -105,7 +105,7 @@ resource "aws_security_group" "sg-manage" {
 }
 
 resource "aws_security_group" "sg-vpc-endpoint" {
-  name        = "sg-vpc-endpoint"
+  name        = "${local.app_name}-${local.env}-sg-vpc-endpoint"
   description = "sg of VPC Endpoint"
   vpc_id      = aws_vpc.vpc.id
   ingress {

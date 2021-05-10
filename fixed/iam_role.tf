@@ -1,5 +1,5 @@
 resource "aws_iam_role" "ecsTaskExecutionRole" {
-  name = "ecsTaskExecutionRole"
+  name = "${local.app_name}-${local.env}-ecsTaskExecutionRole"
   managed_policy_arns = [
     "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy",
     aws_iam_policy.GettingParameterStorePolicy.arn
@@ -22,7 +22,7 @@ POLICY
 }
 
 resource "aws_iam_role" "rds-monitoring-role" {
-  name               = "rds-monitoring-role"
+  name               = "${local.app_name}-${local.env}-rds-monitoring-role"
   assume_role_policy = data.aws_iam_policy_document.rds-monitoring.json
 }
 data "aws_iam_policy_document" "rds-monitoring" {

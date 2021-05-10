@@ -1,5 +1,5 @@
 resource "aws_ecs_task_definition" "ecs-tk" {
-  family                   = "ecs-tk"
+  family                   = "${local.app_name}-${local.env}-ecs-tk"
   requires_compatibilities = ["FARGATE"]
   network_mode             = "awsvpc"
   execution_role_arn       = aws_iam_role.ecsTaskExecutionRole.arn
