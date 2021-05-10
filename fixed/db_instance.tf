@@ -4,7 +4,7 @@ resource "aws_rds_cluster" "rds-cl" {
   engine              = "aurora-mysql"
   engine_version      = "5.7.mysql_aurora.2.09.2"
   engine_mode         = "provisioned"
-  database_name       = "hogehoge"
+  database_name       = "${var.db_name}"
   skip_final_snapshot = true
   # deletion_protection = true
 
@@ -14,8 +14,8 @@ resource "aws_rds_cluster" "rds-cl" {
   ]
 
   # DB情報
-  master_username                 = "admin"
-  master_password                 = "password"
+  master_username                 = "${var.db_user_name}"
+  master_password                 = "${var.db_password}"
   backup_retention_period         = 1
   preferred_backup_window         = "09:00-09:30"
   preferred_maintenance_window    = "sat:20:00-sat:20:30"

@@ -8,7 +8,7 @@ resource "aws_ecs_task_definition" "ecs-tk" {
   container_definitions    = <<JSON
 [
   {
-    "name": "sample-dev",
+    "name": "${var.app_name}-${var.env}",
     "image": "${aws_ecr_repository.ecr-repository.repository_url}:v1",
     "cpu": 256,
     "memoryReservation": 512,
@@ -31,19 +31,19 @@ resource "aws_ecs_task_definition" "ecs-tk" {
     ],
     "secrets": [
       {
-        "name": "sample-dev_DB_HOST",
+        "name": "${var.app_name}-${var.env}_DB_HOST",
         "valueFrom": "param-db-host"
       },
       {
-        "name": "sample-dev_DB_NAME",
+        "name": "${var.app_name}-${var.env}_DB_NAME",
         "valueFrom": "param-db-name"
       },
       {
-        "name": "sample-dev_DB_PASSWORD",
+        "name": "${var.app_name}-${var.env}_DB_PASSWORD",
         "valueFrom": "param-db-password"
       },
       {
-        "name": "sample-dev_DB_USERNAME",
+        "name": "${var.app_name}-${var.env}_DB_USERNAME",
         "valueFrom": "param-db-username"
       }
     ]

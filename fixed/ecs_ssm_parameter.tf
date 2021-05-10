@@ -27,7 +27,7 @@ resource "aws_ssm_parameter" "param-db-password" {
   key_id      = "alias/aws/ssm"
   # Terraform上ではDB用パスワード情報は管理しない。
   # 初回定義作成後に手動変更する。
-  value = "samplepassword"
+  value = "${var.db_password}"
   lifecycle {
     ignore_changes = [value]
   }

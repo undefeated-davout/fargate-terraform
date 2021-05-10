@@ -24,7 +24,7 @@ resource "aws_ecs_service" "ecs-sb" {
   }
   health_check_grace_period_seconds = "120"
   load_balancer {
-    container_name   = "sample-dev"
+    container_name   = "${var.app_name}-${var.env}"
     container_port   = "80"
     target_group_arn = aws_lb_target_group.tg-blue.arn
   }
