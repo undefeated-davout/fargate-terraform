@@ -3,8 +3,8 @@ resource "aws_vpc" "vpc" {
   enable_dns_hostnames = "true"
   instance_tenancy     = "default"
   tags = {
-    "Service": "${var.app_name}-${var.env}"
-    "Env": "${var.env}"
-    "Name": "${var.app_name}-${var.env}-vpc"
+    "Service": "${local.app_name}-${local.env}"
+    "Env": "${local.env}"
+    "Name": "${local.app_name}-${local.env}-vpc"
   }
 }

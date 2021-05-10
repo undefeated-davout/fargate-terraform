@@ -4,12 +4,12 @@ resource "aws_route_table" "rt-internet" {
     cidr_block = "0.0.0.0/0"
     gateway_id = aws_internet_gateway.igw.id
   }
-  tags = merge({"Name": "${var.app_name}-${var.env}-rt-internet"}, var.common_tags)
+  tags = merge({"Name": "${local.app_name}-${local.env}-rt-internet"}, local.common_tags)
 }
 
 resource "aws_route_table" "rt-app" {
   vpc_id = aws_vpc.vpc.id
-  tags = merge({"Name": "${var.app_name}-${var.env}-rt-app"}, var.common_tags)
+  tags = merge({"Name": "${local.app_name}-${local.env}-rt-app"}, local.common_tags)
 }
 
 resource "aws_route_table" "rt-manage" {
@@ -18,5 +18,5 @@ resource "aws_route_table" "rt-manage" {
     cidr_block = "0.0.0.0/0"
     gateway_id = aws_internet_gateway.igw.id
   }
-  tags = merge({"Name": "${var.app_name}-${var.env}-rt-manage"}, var.common_tags)
+  tags = merge({"Name": "${local.app_name}-${local.env}-rt-manage"}, local.common_tags)
 }

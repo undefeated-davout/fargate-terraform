@@ -21,7 +21,7 @@ resource "aws_security_group" "sg-ingress" {
     to_port     = "0"
     cidr_blocks = ["0.0.0.0/0"]
   }
-  tags = merge({"Name": "${var.app_name}-${var.env}-sg-ingress"}, var.common_tags)
+  tags = merge({"Name": "${local.app_name}-${local.env}-sg-ingress"}, local.common_tags)
 }
 
 resource "aws_security_group" "sg-container" {
@@ -55,7 +55,7 @@ resource "aws_security_group" "sg-container" {
     from_port   = "0"
     to_port     = "0"
   }
-  tags = merge({"Name": "${var.app_name}-${var.env}-sg-container"}, var.common_tags)
+  tags = merge({"Name": "${local.app_name}-${local.env}-sg-container"}, local.common_tags)
 }
 
 resource "aws_security_group" "sg-db" {
@@ -82,7 +82,7 @@ resource "aws_security_group" "sg-db" {
     to_port     = "0"
     cidr_blocks = ["0.0.0.0/0"]
   }
-  tags = merge({"Name": "${var.app_name}-${var.env}-sg-db"}, var.common_tags)
+  tags = merge({"Name": "${local.app_name}-${local.env}-sg-db"}, local.common_tags)
 }
 
 resource "aws_security_group" "sg-manage" {
@@ -101,7 +101,7 @@ resource "aws_security_group" "sg-manage" {
     to_port     = "0"
     cidr_blocks = ["0.0.0.0/0"]
   }
-  tags = merge({"Name": "${var.app_name}-${var.env}-sg-manage"}, var.common_tags)
+  tags = merge({"Name": "${local.app_name}-${local.env}-sg-manage"}, local.common_tags)
 }
 
 resource "aws_security_group" "sg-vpc-endpoint" {
@@ -128,5 +128,5 @@ resource "aws_security_group" "sg-vpc-endpoint" {
     to_port     = "0"
     cidr_blocks = ["0.0.0.0/0"]
   }
-  tags = merge({"Name": "${var.app_name}-${var.env}-sg-vpc-endpoint"}, var.common_tags)
+  tags = merge({"Name": "${local.app_name}-${local.env}-sg-vpc-endpoint"}, local.common_tags)
 }

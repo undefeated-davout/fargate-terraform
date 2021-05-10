@@ -24,7 +24,7 @@ resource "aws_ecs_service" "ecs-sb" {
   }
   health_check_grace_period_seconds = "120"
   load_balancer {
-    container_name   = "${var.app_name}-${var.env}"
+    container_name   = "${local.app_name}-${local.env}"
     container_port   = "80"
     target_group_arn = aws_lb_target_group.tg-blue.arn
   }
@@ -43,7 +43,7 @@ resource "aws_ecs_service" "ecs-sb" {
       desired_count,
     ]
   }
-  tags = merge({"Name": "${var.app_name}-${var.env}-ecs-sb"}, var.common_tags)
+  tags = merge({"Name": "${local.app_name}-${local.env}-ecs-sb"}, local.common_tags)
 }
 
 # Auto Scaling

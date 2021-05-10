@@ -1,5 +1,5 @@
 resource "aws_ecr_lifecycle_policy" "ecr-lc-policy" {
-  repository = "${var.app_name}-${var.env}"
+  repository = "${local.app_name}-${local.env}"
   depends_on = [aws_ecr_repository.ecr-repository]
 
   policy = <<POLICY

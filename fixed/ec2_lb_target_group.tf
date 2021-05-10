@@ -15,7 +15,7 @@ resource "aws_lb_target_group" "tg-blue" {
     interval            = "15"
     matcher             = "200"
   }
-  tags = merge({"Name": "${var.app_name}-${var.env}-tg-blue"}, var.common_tags)
+  tags = merge({"Name": "${local.app_name}-${local.env}-tg-blue"}, local.common_tags)
 }
 
 resource "aws_lb_target_group" "tg-green" {
@@ -35,5 +35,5 @@ resource "aws_lb_target_group" "tg-green" {
     interval            = "15"
     matcher             = "200"
   }
-  tags = merge({"Name": "${var.app_name}-${var.env}-tg-green"}, var.common_tags)
+  tags = merge({"Name": "${local.app_name}-${local.env}-tg-green"}, local.common_tags)
 }

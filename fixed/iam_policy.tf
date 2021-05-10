@@ -17,5 +17,5 @@ resource "aws_iam_policy" "GettingParameterStorePolicy" {
   "Version": "2012-10-17"
 }
 POLICY
-  tags = merge({"Name": "${var.app_name}-${var.env}-GettingParameterStorePolicy"}, var.common_tags)
+  tags = merge({"Name": "${local.app_name}-${local.env}-GettingParameterStorePolicy"}, local.common_tags)
 }

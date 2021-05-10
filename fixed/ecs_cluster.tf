@@ -10,5 +10,5 @@ resource "aws_ecs_cluster" "ecs-cluster" {
     name  = "containerInsights"
     value = "enabled"
   }
-  tags = merge({"Name": "${var.app_name}-${var.env}-ecs-cluster"}, var.common_tags)
+  tags = merge({"Name": "${local.app_name}-${local.env}-ecs-cluster"}, local.common_tags)
 }

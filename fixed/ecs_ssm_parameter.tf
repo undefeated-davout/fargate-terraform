@@ -5,7 +5,7 @@ resource "aws_ssm_parameter" "param-db-host" {
   type        = "String"
   data_type   = "text"
   value       = aws_rds_cluster.rds-cl.endpoint
-  tags = merge({"Name": "${var.app_name}-${var.env}-param-db-host"}, var.common_tags)
+  tags = merge({"Name": "${local.app_name}-${local.env}-param-db-host"}, local.common_tags)
 }
 
 resource "aws_ssm_parameter" "param-db-name" {
@@ -15,7 +15,7 @@ resource "aws_ssm_parameter" "param-db-name" {
   type        = "String"
   data_type   = "text"
   value       = "hogehoge"
-  tags = merge({"Name": "${var.app_name}-${var.env}-param-db-name"}, var.common_tags)
+  tags = merge({"Name": "${local.app_name}-${local.env}-param-db-name"}, local.common_tags)
 }
 
 resource "aws_ssm_parameter" "param-db-password" {
@@ -27,11 +27,11 @@ resource "aws_ssm_parameter" "param-db-password" {
   key_id      = "alias/aws/ssm"
   # Terraform上ではDB用パスワード情報は管理しない。
   # 初回定義作成後に手動変更する。
-  value = "${var.db_password}"
+  value = "${local.db_password}"
   lifecycle {
     ignore_changes = [value]
   }
-  tags = merge({"Name": "${var.app_name}-${var.env}-param-db-password"}, var.common_tags)
+  tags = merge({"Name": "${local.app_name}-${local.env}-param-db-password"}, local.common_tags)
 }
 
 resource "aws_ssm_parameter" "param-db-username" {
@@ -41,5 +41,5 @@ resource "aws_ssm_parameter" "param-db-username" {
   type        = "String"
   data_type   = "text"
   value       = "hogehoge"
-  tags = merge({"Name": "${var.app_name}-${var.env}-param-db-username"}, var.common_tags)
+  tags = merge({"Name": "${local.app_name}-${local.env}-param-db-username"}, local.common_tags)
 }

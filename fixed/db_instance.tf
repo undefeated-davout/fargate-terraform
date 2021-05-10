@@ -4,18 +4,18 @@ resource "aws_rds_cluster" "rds-cl" {
   engine              = "aurora-mysql"
   engine_version      = "5.7.mysql_aurora.2.09.2"
   engine_mode         = "provisioned"
-  database_name       = "${var.db_name}"
+  database_name       = "${local.db_name}"
   skip_final_snapshot = true
   # deletion_protection = true
 
   availability_zones = [
-    "${var.region}a",
-    "${var.region}c"
+    "${local.region}a",
+    "${local.region}c"
   ]
 
   # DB情報
-  master_username                 = "${var.db_user_name}"
-  master_password                 = "${var.db_password}"
+  master_username                 = "${local.db_user_name}"
+  master_password                 = "${local.db_password}"
   backup_retention_period         = 1
   preferred_backup_window         = "09:00-09:30"
   preferred_maintenance_window    = "sat:20:00-sat:20:30"
@@ -36,7 +36,7 @@ resource "aws_rds_cluster" "rds-cl" {
     ]
   }
   depends_on = [aws_db_subnet_group.rds-sbgr]
-  tags = merge({"Name": "${var.app_name}-${var.env}-db"}, var.common_tags)
+  tags = merge({"Name": "${local.app_name}-${local.env}-db"}, local.common_tags)
 }
 
 # resource "aws_rds_cluster_instance" "rds-cl-instance" {
@@ -51,5 +51,5 @@ resource "aws_rds_cluster" "rds-cl" {
 #   auto_minor_version_upgrade   = true
 #   monitoring_role_arn          = aws_iam_role.rds-monitoring-role.arn
 #   depends_on                   = [aws_db_subnet_group.rds-sbgr]
-#  tags = merge({"Name": "${var.app_name}-${var.env}-db"}, var.common_tags)
+#  tags = merge({"Name": "${local.app_name}-${local.env}-db"}, local.common_tags)
 # }
