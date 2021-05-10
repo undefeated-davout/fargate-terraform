@@ -4,7 +4,7 @@ resource "aws_instance" "ec2-manage" {
   instance_type               = "t2.micro"
   availability_zone           = "${local.region}a"
   associate_public_ip_address = "true"
-  subnet_id                   = aws_subnet.sb-pb-manage-1a.id
+  subnet_id                   = aws_subnet.sb-pb-manage-a.id
   vpc_security_group_ids      = [aws_security_group.sg-manage.id]
   key_name = "${local.pem_name}"
   # EBS

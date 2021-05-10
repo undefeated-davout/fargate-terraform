@@ -16,8 +16,8 @@ resource "aws_ecs_service" "ecs-sb" {
   # ネットワーク構成
   network_configuration {
     subnets = [
-      aws_subnet.sb-pr-container-1a.id,
-      aws_subnet.sb-pr-container-1c.id
+      aws_subnet.sb-pr-container-a.id,
+      aws_subnet.sb-pr-container-c.id
     ]
     security_groups  = [aws_security_group.sg-container.id]
     assign_public_ip = "false"

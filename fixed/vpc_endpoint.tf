@@ -4,8 +4,8 @@ resource "aws_vpc_endpoint" "vpc-ep-ecr-api" {
   vpc_endpoint_type = "Interface"
   vpc_id            = aws_vpc.vpc.id
   subnet_ids = [
-    aws_subnet.sb-pr-egress-1a.id,
-    aws_subnet.sb-pr-egress-1c.id
+    aws_subnet.sb-pr-egress-a.id,
+    aws_subnet.sb-pr-egress-c.id
   ]
   private_dns_enabled = true
   security_group_ids  = [aws_security_group.sg-vpc-endpoint.id]
@@ -18,8 +18,8 @@ resource "aws_vpc_endpoint" "vpc-ep-dkr" {
   vpc_endpoint_type = "Interface"
   vpc_id            = aws_vpc.vpc.id
   subnet_ids = [
-    aws_subnet.sb-pr-container-1a.id,
-    aws_subnet.sb-pr-container-1c.id
+    aws_subnet.sb-pr-container-a.id,
+    aws_subnet.sb-pr-container-c.id
   ]
   private_dns_enabled = true
   security_group_ids  = [aws_security_group.sg-vpc-endpoint.id]
@@ -32,8 +32,8 @@ resource "aws_vpc_endpoint" "vpc-ep-logs" {
   vpc_endpoint_type = "Interface"
   vpc_id            = aws_vpc.vpc.id
   subnet_ids = [
-    aws_subnet.sb-pr-db-1a.id,
-    aws_subnet.sb-pr-db-1c.id
+    aws_subnet.sb-pr-db-a.id,
+    aws_subnet.sb-pr-db-c.id
   ]
   private_dns_enabled = true
   security_group_ids  = [aws_security_group.sg-vpc-endpoint.id]
@@ -46,8 +46,8 @@ resource "aws_vpc_endpoint" "vpc-ep-ssm" {
   vpc_endpoint_type = "Interface"
   vpc_id            = aws_vpc.vpc.id
   subnet_ids = [
-    aws_subnet.sb-pr-container-1a.id,
-    aws_subnet.sb-pr-container-1c.id
+    aws_subnet.sb-pr-container-a.id,
+    aws_subnet.sb-pr-container-c.id
   ]
   private_dns_enabled = true
   security_group_ids  = [aws_security_group.sg-vpc-endpoint.id]
