@@ -9,7 +9,7 @@ resource "aws_ecs_task_definition" "ecs-tk" {
 [
   {
     "name": "${local.app_name}-${local.env}",
-    "image": "${aws_ecr_repository.ecr-repository.repository_url}:v1",
+    "image": "${aws_ecr_repository.ecr-repository.repository_url}:${local.image_target_tag}",
     "cpu": 256,
     "memoryReservation": 512,
     "essential": true,
@@ -32,19 +32,19 @@ resource "aws_ecs_task_definition" "ecs-tk" {
     "secrets": [
       {
         "name": "${local.app_name}-${local.env}_DB_HOST",
-        "valueFrom": "param-db-host"
+        "valueFrom": "${local.app_name}-${local.env}-param-db-host"
       },
       {
         "name": "${local.app_name}-${local.env}_DB_NAME",
-        "valueFrom": "param-db-name"
+        "valueFrom": "${local.app_name}-${local.env}-param-db-name"
       },
       {
         "name": "${local.app_name}-${local.env}_DB_PASSWORD",
-        "valueFrom": "param-db-password"
+        "valueFrom": "${local.app_name}-${local.env}-param-db-password"
       },
       {
         "name": "${local.app_name}-${local.env}_DB_USERNAME",
-        "valueFrom": "param-db-username"
+        "valueFrom": "${local.app_name}-${local.env}-param-db-username"
       }
     ]
   }

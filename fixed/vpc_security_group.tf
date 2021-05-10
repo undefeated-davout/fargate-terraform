@@ -91,6 +91,12 @@ resource "aws_security_group" "sg-manage" {
   vpc_id      = aws_vpc.vpc.id
   ingress {
     protocol    = "tcp"
+    from_port   = "22"
+    to_port     = "22"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  ingress {
+    protocol    = "tcp"
     from_port   = "60022"
     to_port     = "60022"
     cidr_blocks = ["0.0.0.0/0"]

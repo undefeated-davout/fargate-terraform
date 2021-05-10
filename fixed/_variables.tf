@@ -1,6 +1,5 @@
 locals {
   // 共通情報
-  aws_account_id = "hogehoge"
   region = "ap-northeast-1"
   app_name = "sampleapp"
   env = "dev"
@@ -11,9 +10,12 @@ locals {
   // pem
   pem_name = "cnapp_key"
   // DB
+  db_endpoint = "sample-endpoint"
   db_name = "sampledb"
   db_user_name = "admin"
   db_password = "samplepassword"
   // S3
   s3_bucket_name = "undefeated-davout-001"
+  // ECS
+  image_target_tag = "v1"
 }

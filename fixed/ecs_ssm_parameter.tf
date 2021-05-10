@@ -4,7 +4,7 @@ resource "aws_ssm_parameter" "param-db-host" {
   tier        = "Standard"
   type        = "String"
   data_type   = "text"
-  value       = aws_rds_cluster.rds-cl.endpoint
+  value       = "${local.db_endpoint}"
   tags = merge({"Name": "${local.app_name}-${local.env}-param-db-host"}, local.common_tags)
 }
 

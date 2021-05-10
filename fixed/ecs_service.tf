@@ -4,7 +4,7 @@ resource "aws_ecs_service" "ecs-sb" {
   launch_type                        = "FARGATE"
   task_definition                    = aws_ecs_task_definition.ecs-tk.arn
   platform_version                   = "LATEST"
-  cluster                            = "ecs-cluster"
+  cluster                            = "${local.app_name}-${local.env}-ecs-cl"
   scheduling_strategy                = "REPLICA"
   desired_count                      = "2"
   deployment_minimum_healthy_percent = "100"
@@ -50,7 +50,7 @@ resource "aws_ecs_service" "ecs-sb" {
 resource "aws_appautoscaling_target" "as-target" {
   min_capacity       = 2
   max_capacity       = 4
-  resource_id        = "service/${aws_ecs_cluster.ecs-cluster.name}/${aws_ecs_service.ecs-sb.name}"
+  resource_id        = "service/${aws_ecs_cluster.ecs-cl.name}/${aws_ecs_service.ecs-sb.name}"
   scalable_dimension = "ecs:service:DesiredCount"
   service_namespace  = "ecs"
 }
@@ -58,7 +58,7 @@ resource "aws_appautoscaling_target" "as-target" {
 resource "aws_appautoscaling_policy" "as-policy" {
   name        = "${local.app_name}-${local.env}-ecs-scalingpolicy"
   policy_type = "TargetTrackingScaling"
-  resource_id = "service/ecs-cluster/ecs-sb"
+  resource_id = "service/${aws_ecs_cluster.ecs-cl.name}/${aws_ecs_service.ecs-sb.name}"
 
   scalable_dimension = "ecs:service:DesiredCount"
   service_namespace  = "ecs"
